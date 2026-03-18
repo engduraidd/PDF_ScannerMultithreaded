@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class MainApp 
 {
 
-	void main(String[] args) 
+	;public static void main(String[] args) 
 	
 	
 	{
@@ -18,8 +18,22 @@ public class MainApp
 		 Course: SE422-S2
 		 University: American University of Iraq (AUIS)
 		 *******************************************************************************/
-	
+	Scanner scanner = new Scanner (System.in);
 
+	
+	System.out.println("Please Enter dircatory path: ");
+    String path = scanner.nextLine();
+	
+	
+	File dir = new File(path);
+
+	if (!dir.exists() || !dir.isDirectory()) 
+	{
+        System.out.println("Invalid directory. Please try again.");
+        return;
+    }
+
+    System.out.println("Directory accepted: " + dir.getAbsolutePath());
 	}
 
 }
