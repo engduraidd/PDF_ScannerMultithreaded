@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 import counters.MultiThreadCounter;
 import counters.SingleThreadCounter;
+import counters.ThreadPoolCounter;
 public class MainApp 
 {
 
@@ -35,6 +36,7 @@ public class MainApp
 
     System.out.println("Directory accepted: " + dir.getAbsolutePath());
     
+ 	//*******************************Using only 1 thread(single)*******************************
 
  	SingleThreadCounter t1 = new SingleThreadCounter(dir);
 
@@ -48,7 +50,8 @@ public class MainApp
 
  	System.out.println("PDF Count (Single Thread): " + t1.getCount());
  	
- 	
+ 	//*******************************Using 4 threads(multi)*******************************
+
 
  	MultiThreadCounter multiThread = new MultiThreadCounter(dir);
 
@@ -61,6 +64,20 @@ public class MainApp
  	}
 
  	System.out.println(" PDF Count (Multi Thread): " + multiThread.getCount());
+ 	
+ 	//*******************************Using thread pool*******************************
+ 
+ 	ThreadPoolCounter poolCounter = new ThreadPoolCounter(dir);
+
+ 	poolCounter.start();
+
+ 	try {
+ 	    poolCounter.join();
+ 	} catch (InterruptedException e) {
+ 	    e.printStackTrace();
+ 	}
+
+ 	System.out.println("📄 PDF Count (Thread Pool): " + poolCounter.getCount());
  	
  	
 	}
