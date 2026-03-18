@@ -2,7 +2,7 @@
 package main;
 import java.io.File;
 import java.util.Scanner;
-
+import counters.MultiThreadCounter;
 import counters.SingleThreadCounter;
 public class MainApp 
 {
@@ -35,18 +35,34 @@ public class MainApp
 
     System.out.println("Directory accepted: " + dir.getAbsolutePath());
     
- // Step 2: Single Thread Counting
- 	SingleThreadCounter singleThread = new SingleThreadCounter(dir);
 
- 	singleThread.start();
+ 	SingleThreadCounter t1 = new SingleThreadCounter(dir);
+
+ 	t1.start();
 
  	try {
- 	    singleThread.join(); // wait until finished
+ 	    t1.join();
  	} catch (InterruptedException e) {
  	    e.printStackTrace();
  	}
 
- 	System.out.println("📄 PDF Count (Single Thread): " + singleThread.getCount());
+ 	System.out.println("PDF Count (Single Thread): " + t1.getCount());
+ 	
+ 	
+
+ 	MultiThreadCounter multiThread = new MultiThreadCounter(dir);
+
+ 	multiThread.start();
+
+ 	try {
+ 	    multiThread.join();
+ 	} catch (InterruptedException e) {
+ 	    e.printStackTrace();
+ 	}
+
+ 	System.out.println(" PDF Count (Multi Thread): " + multiThread.getCount());
+ 	
+ 	
 	}
 
 	
