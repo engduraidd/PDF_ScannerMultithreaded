@@ -3,11 +3,11 @@ package main;
 import java.io.File;
 import java.util.Scanner;
 
-
+import counters.SingleThreadCounter;
 public class MainApp 
 {
 
-	;public static void main(String[] args) 
+	public static void main(String[] args) 
 	
 	
 	{
@@ -34,6 +34,21 @@ public class MainApp
     }
 
     System.out.println("Directory accepted: " + dir.getAbsolutePath());
+    
+ // Step 2: Single Thread Counting
+ 	SingleThreadCounter singleThread = new SingleThreadCounter(dir);
+
+ 	singleThread.start();
+
+ 	try {
+ 	    singleThread.join(); // wait until finished
+ 	} catch (InterruptedException e) {
+ 	    e.printStackTrace();
+ 	}
+
+ 	System.out.println("📄 PDF Count (Single Thread): " + singleThread.getCount());
 	}
 
+	
+	
 }
