@@ -24,7 +24,7 @@ public class ThreadPoolCounter extends Thread {
         int cores = Runtime.getRuntime().availableProcessors();
 
      
-        int poolSize = cores / 2; 
+        int poolSize = cores / 2; //I have only 8 cores in my simple Laptop
 
         if (poolSize == 0) poolSize = 1; 
 
