@@ -1,16 +1,20 @@
 
 package main;
 import utils.ResultPrinter;
+
 import java.io.File;
 import java.util.Scanner;
 import counters.MultiThreadCounter;
 import counters.SingleThreadCounter;
 import counters.ThreadPoolCounter;
+
+
+
+
 public class MainApp 
 {
 
 	public static void main(String[] args) 
-	
 	
 	{
 		/**********************************StudentInfos**********************************
@@ -81,7 +85,6 @@ public class MainApp
  	System.out.println("PDF Count (Thread Pool): " + poolCounter.getCount());
  	
  	//***************************Printh Results**************************************************
- // Step 5: Print results using a separate thread
  	ResultPrinter printer = new ResultPrinter(
  	        t1.getCount(),
  	        multiThread.getCount(),

@@ -5,7 +5,8 @@ import java.util.concurrent.*;
 
 import scanner.FileScanner;
 
-public class ThreadPoolCounter extends Thread {
+public class ThreadPoolCounter extends Thread 
+{
 
     private File dir;
     private int count = 0;

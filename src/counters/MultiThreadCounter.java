@@ -13,7 +13,8 @@ public class MultiThreadCounter extends Thread {
     }
 
     @Override
-    public void run() {
+    public void run() 
+    {
 
         File[] files = dir.listFiles();
         if (files == null) return;
